@@ -6,10 +6,26 @@ document.addEventListener("DOMContentLoaded", function(){
 	let scoreZero = 0;
 	let isLocked = false;
 
+	let wrapper = document.querySelector(".wrapper");
+
+	let scoreArea = document.createElement("div");
+	scoreArea.className = "score";
+	wrapper.append(scoreArea);
+
+	let scoreCrossPanel = document.createElement("span");
+	scoreCrossPanel.className = "score__cross";
+	scoreCrossPanel.innerHTML = "X <span class='score__number'>" + scoreCross + "</span>";
+	scoreArea.append(scoreCrossPanel);
+
+	let scoreZeroPanel = document.createElement("span");
+	scoreZeroPanel.className = "score__zero";
+	scoreZeroPanel.innerHTML = "O <span class='score__number'>" + scoreZero + "</span>";
+	scoreArea.append(scoreZeroPanel);
+
 	let field = document.createElement("div");
 	field.className = "field";
 	field.dataset.currentPlayer = currentPlayer;
-	document.body.prepend(field);
+	wrapper.append(field);
 
 	let cellArray = [];
 
@@ -23,20 +39,6 @@ document.addEventListener("DOMContentLoaded", function(){
 
 	let horizontal = document.createElement("div");
 	horizontal.className = "hr";
-
-	let scoreArea = document.createElement("div");
-	scoreArea.className = "score";
-	document.body.prepend(scoreArea);
-
-	let scoreCrossPanel = document.createElement("span");
-	scoreCrossPanel.className = "score__cross";
-	scoreCrossPanel.innerHTML = "X <span class='score__number'>" + scoreCross + "</span>";
-	scoreArea.append(scoreCrossPanel);
-
-	let scoreZeroPanel = document.createElement("span");
-	scoreZeroPanel.className = "score__zero";
-	scoreZeroPanel.innerHTML = "O <span class='score__number'>" + scoreZero + "</span>";
-	scoreArea.append(scoreZeroPanel);
 
 	let buttons = document.createElement("div");
 	buttons.className = "buttons";
@@ -52,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function(){
 	resetScoreButton.innerHTML = "Сбросит счёт";
 	buttons.append(resetScoreButton);
 
-	cellArray.forEach( function(cell) {
+	cellArray.forEach( cell => {
 		cell.addEventListener("mouseenter", highlightOn);
 		cell.addEventListener("mouseleave", highlightOff);
 		cell.addEventListener("click", makeStep);
@@ -114,7 +116,7 @@ document.addEventListener("DOMContentLoaded", function(){
 				let top = (i === 0) ? 16.666666 :
 				(i === 3) ? 50 :
 				83.333333;
-				horizontal.style = "width: 100%; height: 4px; top: " + top + "%; transform: translate(0, -50%);";
+				horizontal.style = "width: 100%; height: 6px; top: " + top + "%; transform: translate(0, -50%);";
 				break;
 			}
 		}
@@ -125,19 +127,19 @@ document.addEventListener("DOMContentLoaded", function(){
 				let left = (i === 0) ? 16.666666 :
 				(i === 1) ? 50 :
 				83.333333;
-				horizontal.style = "width: 4px; height: 100%; left: " + left + "%; transform: translate(-50%, 0);";
+				horizontal.style = "width: 6px; height: 100%; left: " + left + "%; transform: translate(-50%, 0);";
 				break;
 			}
 		}
 
 		if ( (cellArray[0].dataset.mark === cellArray[4].dataset.mark) && (cellArray[4].dataset.mark === cellArray[8].dataset.mark) && (cellArray[0].dataset.mark) ) {
 			winner = cellArray[0].dataset.mark;
-			horizontal.style = "width: 120%; height: 4px; left: 50%; top: 50%; transform: translate(-50%, -50%) rotate(45deg);";
+			horizontal.style = "width: 120%; height: 6px; left: 50%; top: 50%; transform: translate(-50%, -50%) rotate(45deg);";
 		}
 
 		if ( (cellArray[2].dataset.mark === cellArray[4].dataset.mark) && (cellArray[4].dataset.mark === cellArray[6].dataset.mark) && (cellArray[2].dataset.mark) ) {
 			winner = cellArray[2].dataset.mark;
-			horizontal.style = "width: 120%; height: 4px; left: 50%; top: 50%; transform: translate(-50%, -50%) rotate(-45deg);";
+			horizontal.style = "width: 120%; height: 6px; left: 50%; top: 50%; transform: translate(-50%, -50%) rotate(-45deg);";
 		}
 
 		if (winner) {

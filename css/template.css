@@ -1,3 +1,7 @@
+* {
+	box-sizing: border-box;
+}
+
 html {
 	height: 100%;
 }
@@ -5,18 +9,22 @@ html {
 body {
 	height: 100%;
 	margin: 0;
+	background-image: url("../img/bg.jpg");*/
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+.wrapper {
+	padding: 0 15px;
+	height: 100%;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
 	align-items: center;
-	background-image: url("../img/bg.jpg");
-	background-position: center;
-	background-size: cover;
-	background-repeat: no-repeat;
-	padding: 0 15px;
 }
 
-.field {
+.field { 
 	width: 100%;
 	display: flex;
 	flex-wrap: wrap;
@@ -63,25 +71,26 @@ body {
 	justify-content: space-between;
 	padding: 5px 15px;
 	border-radius: 5px;
-	box-shadow: 5px 5px 7px rgba(0,0,0,0.5);
 }
 
 .score__cross {
 	color: red;
 	border: 1px solid red;
+	box-shadow: 5px 5px 7px rgba(255,0,0,0.5);
 }
 
 .score__zero {
 	color: green;
 	border: 1px solid green;
 	flex-direction: row-reverse;
+	box-shadow: -5px 5px 7px rgba(0,255,0,0.5);
 }
 
 .cell {
 	box-sizing: border-box;
 	width: 33.333333%;
 	padding-bottom: 33.333333%;
-	border: 1px solid black;
+	border: 2px solid black;
 	cursor: pointer;
 	position: relative;
 }
@@ -116,7 +125,7 @@ body {
 .cell[data-mark="cross"]::after {
 	content: "";
 	width: 80%;
-	height: 4px;
+	height: 6px;
 	background: red;
 	position: absolute;
 	top: 50%;
@@ -140,7 +149,7 @@ body {
 	width: 60%;
 	height: 60%;
 	border-radius: 50%;
-	border: 4px solid green;
+	border: 6px solid green;
 	position: absolute;
 	top: 50%;
 	left: 50%;
