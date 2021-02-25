@@ -6,7 +6,9 @@ document.addEventListener("DOMContentLoaded", function(){
 	let scoreZero = 0;
 	let isLocked = false;
 
-	let wrapper = document.querySelector(".wrapper");
+	let wrapper = document.createElement("div");
+	wrapper.className = "wrapper";
+	document.body.prepend(wrapper);
 
 	let scoreArea = document.createElement("div");
 	scoreArea.className = "score";
