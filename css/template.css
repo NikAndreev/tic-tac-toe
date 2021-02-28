@@ -126,6 +126,7 @@ body {
 	content: "";
 	width: 80%;
 	height: 6px;
+	border-radius: 3px;
 	background: red;
 	position: absolute;
 	top: 50%;
@@ -165,6 +166,7 @@ body {
 .hr {
 	background: #3B2EEB;
 	position: absolute;
+	border-radius: 3px;
 }
 
 .buttons {
