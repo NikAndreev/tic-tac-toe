@@ -157,13 +157,11 @@ document.addEventListener("DOMContentLoaded", function(){
 			line.style = "left: 50%; top: 50%; width: 130%; height: 6px; transform: translate(-50%, -50%) rotate(-45deg); transition: width 0.5s;";
 		}
 
-		if (currentWinner) {
 
-			if (currentWinner === "cross") {
-				score.cross++;
-			} else {
-				score.zero++;
-			}
+
+		if (currentWinner) {
+			
+			score[currentWinner]++;
 
 			return true;
 
