@@ -131,7 +131,7 @@ document.addEventListener("DOMContentLoaded", function(){
 				let top = (i === 0) ? 16.666666 :
 				(i === 3) ? 50 :
 				83.333333;
-				line.style = `top: ${top}%; left: 0; width: 100%; height: 6px; transform: translate(0, -50%); transition: width 0.5s;`;
+				makeLineVisible(`top: ${top}%; left: 50%; width: 100%; transform: translate(-50%, -50%);`);
 				break;
 			}
 		}
@@ -142,19 +142,19 @@ document.addEventListener("DOMContentLoaded", function(){
 				let left = (i === 0) ? 16.666666 :
 				(i === 1) ? 50 :
 				83.333333;
-				line.style = `left: ${left}%; top: 0; height: 100%; width: 6px; transform: translate(-50%, 0); transition: height 0.5s;`;
+				makeLineVisible(`left: ${left}%; top: 50%; width: 100%; transform: translate(-50%, -50%) rotate(90deg);`);
 				break;
 			}
 		}
 
 		if ( (cellArray[0].dataset.mark === cellArray[4].dataset.mark) && (cellArray[4].dataset.mark === cellArray[8].dataset.mark) && (cellArray[0].dataset.mark) ) {
 			currentWinner = cellArray[0].dataset.mark;
-			line.style = "left: 50%; top: 50%; width: 130%; height: 6px; transform: translate(-50%, -50%) rotate(45deg); transition: width 0.5s;";
+			makeLineVisible("left: 50%; top: 50%; width: 130%; transform: translate(-50%, -50%) rotate(45deg);");
 		}
 
 		if ( (cellArray[2].dataset.mark === cellArray[4].dataset.mark) && (cellArray[4].dataset.mark === cellArray[6].dataset.mark) && (cellArray[2].dataset.mark) ) {
 			currentWinner = cellArray[2].dataset.mark;
-			line.style = "left: 50%; top: 50%; width: 130%; height: 6px; transform: translate(-50%, -50%) rotate(-45deg); transition: width 0.5s;";
+			makeLineVisible("left: 50%; top: 50%; width: 130%; transform: translate(-50%, -50%) rotate(135deg);");
 		}
 
 
@@ -177,6 +177,7 @@ document.addEventListener("DOMContentLoaded", function(){
 		});
 		currentWinner = false;
 		currentPlayer = "cross";
+		line.className = "line";
 		line.style = "";
 		stepsCounter = 0;
 		field.dataset.currentPlayer = currentPlayer;
@@ -186,6 +187,13 @@ document.addEventListener("DOMContentLoaded", function(){
 	function updateScore() {
 		scoreCrossOutput.innerText = score.cross;
 		scoreZeroOutput.innerText = score.zero;
+	}
+
+	function makeLineVisible(style) {
+		line.style = style;
+		setTimeout(() => {
+			line.classList.add("active");
+		});
 	}
 
 });

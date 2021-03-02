@@ -165,11 +165,25 @@ body {
 }
 
 .line {
-	background: #3B2EEB;
 	position: absolute;
 	border-radius: 3px;
 	width: 0;
-	height: 0;
+	height: 6px;
+}
+
+.line::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 0;
+	height: 100%;
+	background: #3B2EEB;
+}
+
+.line.active::before {
+	width: 100%;
+	transition: width 0.5s;
 }
 
 .buttons {
