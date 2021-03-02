@@ -9,10 +9,11 @@ html {
 body {
 	height: 100%;
 	margin: 0;
-	background-image: url("../img/bg.jpg");*/
+	background-image: url("../img/bg.jpg");
 	background-position: center;
 	background-size: cover;
 	background-repeat: no-repeat;
+	
 }
 
 .wrapper {
@@ -163,10 +164,12 @@ body {
 	opacity: 0.3;
 }
 
-.hr {
+.line {
 	background: #3B2EEB;
 	position: absolute;
 	border-radius: 3px;
+	width: 0;
+	height: 0;
 }
 
 .buttons {
